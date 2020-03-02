@@ -6,6 +6,7 @@ public class BlockMover : MonoBehaviour
 {
     public Transform leftBoundary;
     public Transform rightBoundary;
+    public Rigidbody blockRB;
 
     public float moveSpeed;
 
@@ -22,25 +23,43 @@ public class BlockMover : MonoBehaviour
     {
       if (isMovingRight)
         {
-            // move block right
-            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-
-            // if we're too far to the right, turn around
-            if (transform.position.x > rightBoundary.position.x)
-            {
-                isMovingRight = false;
-            }
+            MoveBlockRight();
 
         }
         else
         {
-            // move block left
-            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            MoveBlockLeft();
+        }
 
-            if (transform.position.x < leftBoundary.position.x)
-            {
-                isMovingRight = true;
-            }
+
+      if (Input.GetKeyDown(KeyCode.Space))
+        {
+            blockRB.useGravity = true;
+            moveSpeed = 0;
+        }
+    }
+
+
+    void MoveBlockRight ()
+    {
+        // move block right
+        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+
+        // if we're too far to the right, turn around
+        if (transform.position.x > rightBoundary.position.x)
+        {
+            isMovingRight = false;
+        }
+    }
+
+    void MoveBlockLeft ()
+    {
+        // move block left
+        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+
+        if (transform.position.x < leftBoundary.position.x)
+        {
+            isMovingRight = true;
         }
     }
 }
