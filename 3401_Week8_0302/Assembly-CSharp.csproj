@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BlockMover.cs" />
     <Compile Include="Assets\Scripts\BlockSpawner.cs" />
+    <Compile Include="Assets\Scripts\FloorCollisionDetection.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/zt421918/week8_3401_0302/3401_Week8_0302/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

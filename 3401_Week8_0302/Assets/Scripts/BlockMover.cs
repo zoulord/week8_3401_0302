@@ -15,7 +15,8 @@ public class BlockMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        leftBoundary = GameObject.Find("LeftBoundary").transform;
+        rightBoundary = GameObject.Find("RightBoundary").transform;
     }
 
     // Update is called once per frame
@@ -36,6 +37,13 @@ public class BlockMover : MonoBehaviour
         {
             blockRB.useGravity = true;
             moveSpeed = 0;
+
+            // Find spawner, call spawn function
+            GameObject spawner = GameObject.Find("Block Spawner");
+            BlockSpawner spawnerScript = spawner.GetComponent<BlockSpawner>();
+            spawnerScript.SpawnBlock();
+
+            Destroy(this);
         }
     }
 
